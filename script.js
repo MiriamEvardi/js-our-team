@@ -1,4 +1,7 @@
 
+const memberName = document.querySelector("div");
+
+
 //lista membri
 const members = [
     {
@@ -36,19 +39,28 @@ const members = [
 
 
 
+
 //stampo in console
+
+
 for (let i = 0; i < members.length; i++) {
 
-    const membersObject = members[i];
+    let membersObject = members[i];
+    let textPrinted = "";
 
     for (let key in membersObject) {
 
-        console.log(key + ": " + membersObject[key])
+        console.log(key + ": " + membersObject[key]);
+
+        textPrinted += `${key}: ${membersObject[key]} <br> `
     }
 
     console.log("-------------")
 
+    memberName.innerHTML += `<div>${textPrinted}</div>`;
+
 }
+
 
 
 
