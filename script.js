@@ -1,5 +1,5 @@
 
-const memberName = document.querySelector("div");
+const memberName = document.querySelector("ul");
 
 
 //lista membri
@@ -52,12 +52,13 @@ for (let i = 0; i < members.length; i++) {
 
         console.log(key + ": " + membersObject[key]);
 
-        textPrinted += `${key}: ${membersObject[key]} <br> `
+        textPrinted += ` ${membersObject[key]} <br> `
     }
 
     console.log("-------------")
 
-    memberName.innerHTML += `<div>${textPrinted}</div>`;
+    memberName.innerHTML += `<li>${textPrinted}</li>`;
+    memberName.classList.add("text-center");
 
 }
 
