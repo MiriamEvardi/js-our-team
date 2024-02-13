@@ -1,5 +1,5 @@
-
-const memberName = document.querySelectorAll(".my-card");
+const memberImage = document.querySelectorAll(".image");
+const text = document.querySelectorAll(".text");
 
 
 //lista membri
@@ -39,38 +39,38 @@ const members = [
 
 
 
-//stampo in console
 
+
+//stampo in console + DOM
 
 for (let i = 0; i < members.length; i++) {
 
     let membersObject = members[i];
 
-
     let textPrinted = "";
     let image = "";
 
     for (let key in membersObject) {
+
         console.log(key + ": " + membersObject[key]);
 
 
-        if (key == "pic") {
-            image += `<img src="./img/${membersObject["pic"]}">`
-        } else {
-            textPrinted += `${membersObject[key]} <br> `
+        if (key === "name") {
+            textPrinted += `<span class="member-name">${membersObject[key]}</span><br>`;
 
+        } else if (key === "pic") {
+            image += `<img src="./img/${membersObject["pic"]}">`;
+
+        } else {
+            textPrinted += `${membersObject[key]} <br>`;
         }
+
     }
 
     console.log("-------------")
 
-    memberName[i].innerHTML += `<div>${image}</div>`;
-    memberName[i].innerHTML += `<div>${textPrinted}</div>`;
-    memberName[i].classList.add("text-center");
-
-
-
-
+    memberImage[i].innerHTML += `<div>${image}</div>`;
+    text[i].innerHTML += `<div>${textPrinted}</div>`;
 }
 
 
