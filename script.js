@@ -1,5 +1,5 @@
 
-const memberName = document.querySelector("ul");
+const memberName = document.querySelectorAll(".my-card");
 
 
 //lista membri
@@ -27,7 +27,7 @@ const members = [
     {
         name: "Scott Estrada",
         role: "Developer",
-        pic: " scott-estrada-developer.jpg"
+        pic: "scott-estrada-developer.jpg"
     },
     {
         name: "Barbara Ramos",
@@ -39,28 +39,41 @@ const members = [
 
 
 
-
 //stampo in console
 
 
 for (let i = 0; i < members.length; i++) {
 
     let membersObject = members[i];
+
+
     let textPrinted = "";
+    let image = "";
 
     for (let key in membersObject) {
-
         console.log(key + ": " + membersObject[key]);
 
-        textPrinted += ` ${membersObject[key]} <br> `
+
+        if (key == "pic") {
+            image += `<img src="./img/${membersObject["pic"]}">`
+        } else {
+            textPrinted += `${membersObject[key]} <br> `
+
+        }
     }
 
     console.log("-------------")
 
-    memberName.innerHTML += `<li>${textPrinted}</li>`;
-    memberName.classList.add("text-center");
+    memberName[i].innerHTML += `<div>${image}</div>`;
+    memberName[i].innerHTML += `<div>${textPrinted}</div>`;
+    memberName[i].classList.add("text-center");
+
+
+
 
 }
+
+
 
 
 
