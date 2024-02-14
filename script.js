@@ -1,5 +1,4 @@
-const memberImage = document.querySelectorAll(".image");
-const text = document.querySelectorAll(".text");
+
 
 
 //lista membri
@@ -39,43 +38,48 @@ const members = [
 
 
 
-
+const membersElement = document.querySelector("#members");
 
 //stampo in console + DOM
 
 for (let i = 0; i < members.length; i++) {
 
-    let membersObject = members[i];
+    let singleMember = document.createElement("section");
+    singleMember.className = "idMember"
 
-    let textPrinted = "";
-    let image = "";
+    let membersObject = members[i];
 
     for (let key in membersObject) {
 
         console.log(key + ": " + membersObject[key]);
 
 
-        if (key === "name") {
-            textPrinted += `<span class="member-name">${membersObject[key]}</span><br>`;
+        if (key !== "pic") {
 
-        } else if (key === "pic") {
-            image += `<img src="./img/${membersObject["pic"]}">`;
+            const details = document.createElement("div");
+
+            details.innerText = membersObject[key];
+
+            details.className = key;
+
+            singleMember.append(details);
 
         } else {
-            textPrinted += `${membersObject[key]} <br>`;
+            const listImageElement = document.createElement("img");
+
+            listImageElement.src = "./img/" + membersObject.pic;
+
+            listImageElement.alt = "immagine di " + membersObject.name;
+
+            singleMember.append(listImageElement);
+
         }
+
 
     }
 
     console.log("-------------")
+    membersElement.append(singleMember);
 
-    memberImage[i].innerHTML += `<div>${image}</div>`;
-    text[i].innerHTML += `<div>${textPrinted}</div>`;
+
 }
-
-
-
-
-
-
-
